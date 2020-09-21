@@ -1,0 +1,18 @@
+/*
+ * 项目名:    gma_law_flutter2
+ * 包名
+ * 文件名:    base_net_entity
+ * 创建时间:  2020-01-18 on 15:09
+ * 描述:
+ *
+ * @author   YHF
+ */
+
+class BaseNetEntity<T> {
+  int code;
+  String message;
+
+  BaseNetEntity({this.code, this.message, this.data});
+
+  T data;
+}

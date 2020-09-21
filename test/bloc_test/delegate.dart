@@ -1,0 +1,35 @@
+import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:y_framework/base/base_bloc.dart';
+import 'package:y_framework/net/exception/exception.dart';
+
+class SimpleBlocDelegate extends BlocObserver {
+  @override
+  void onEvent(Bloc bloc, Object event) {
+    super.onEvent(bloc, event);
+    print(event);
+  }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    print(transition);
+  }
+
+  @override
+  void onError(Cubit cubit, Object error, StackTrace stackTrace) {
+    // TODO: implement onError
+    super.onError(cubit, error, stackTrace);
+    if (cubit is BaseLoadBloc) {}
+    if (error is DomainException) {
+    } else if (error is ServiceException || error is DioError) {}
+    print('$error===$cubit==$stackTrace');
+  }
+
+  @override
+  void onChange(Cubit cubit, Change change) {
+    // TODO: implement onChange
+    super.onChange(cubit, change);
+    print('$cubit===$change');
+  }
+}
