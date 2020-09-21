@@ -7,12 +7,12 @@
  *
  * @author   YHF
  */
-import 'package:equatable/equatable.dart';
+export 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
 import 'package:y_framework/base/base_view_to_presenter.dart';
 import 'package:y_framework/service/load/bloc/bloc.dart';
 import 'base_event.dart';
-import 'package:flutter/foundation.dart';
+export  'package:flutter/foundation.dart';
 
 
 abstract class BaseAppBloc<Event extends BaseEvent, State>
