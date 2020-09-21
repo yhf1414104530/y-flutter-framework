@@ -9,7 +9,6 @@
  */
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:y_framework/net/exception/exception.dart';
 
 import 'base_bloc.dart';
