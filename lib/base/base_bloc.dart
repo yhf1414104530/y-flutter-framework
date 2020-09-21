@@ -14,6 +14,7 @@ import 'package:y_framework/service/load/bloc/bloc.dart';
 import 'base_event.dart';
 import 'package:flutter/foundation.dart';
 
+
 abstract class BaseAppBloc<Event extends BaseEvent, State>
     extends Bloc<Event, State> {
   BaseAppBloc(State initialState) : super(initialState);
