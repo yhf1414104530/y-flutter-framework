@@ -19,11 +19,11 @@ mixin UI {
 
   /// screen width
   /// 屏幕 宽
-  double get screenWidth => ScreenUtil.screenWidth;
+  double get screenWidth => ScreenUtil().screenWidth;
 
   /// screen height
   /// 屏幕 高
-  double get screenHeight => ScreenUtil.screenHeight;
+  double get screenHeight => ScreenUtil().screenHeight;
 
   double sFontSize(double size) {
     return _screenUtil.setSp(size);

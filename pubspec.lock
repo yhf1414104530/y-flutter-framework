@@ -208,7 +208,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.1"
+    version: "3.0.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -702,4 +702,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.9.0-14.0.dev <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  flutter: ">=1.19.0-4.3.pre <2.0.0"
