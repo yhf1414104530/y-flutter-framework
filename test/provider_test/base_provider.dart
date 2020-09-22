@@ -46,6 +46,10 @@ abstract class BaseProvider<T> extends YBaseProvider<T> {
         data = await _customProvider.dio.requestDel(requestBean.requestUrl,
             requestParams: requestBean.requestParams);
         break;
+      case RequestType.POST_JSON:
+        data = await _customProvider.dio.requestPostJson(requestBean.requestUrl,
+            json: requestBean.requestJson);
+        break;
     }
     return _transformData(data);
   }

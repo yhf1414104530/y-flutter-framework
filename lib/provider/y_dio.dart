@@ -9,9 +9,11 @@
  */
 
 abstract class YDio {
-  Future requestGet(String apiAddress,{Map<String,dynamic> requestParams});
+  Future requestGet(String apiAddress, {Map<String, dynamic> requestParams});
 
-  Future requestPost(String apiAddress,{Map<String,dynamic>  requestParams});
+  Future requestPost(String apiAddress, {Map<String, dynamic> requestParams});
 
-  Future requestDel(String apiAddress,{Map<String,dynamic>  requestParams});
+  Future requestPostJson(String apiAddress, {String json});
+
+  Future requestDel(String apiAddress, {Map<String, dynamic> requestParams});
 }
