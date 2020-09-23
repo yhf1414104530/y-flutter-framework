@@ -53,4 +53,10 @@ class DefaultDio extends YDio {
   Future requestPost(String apiAddress, {Map<String, dynamic> requestParams}) {
     return _dio.post(apiAddress, data: json.encode(requestParams));
   }
+
+  @override
+  Future requestPostJson(String apiAddress, {String json}) {
+    // TODO: implement requestPostJson
+    throw UnimplementedError();
+  }
 }
