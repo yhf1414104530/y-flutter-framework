@@ -4,7 +4,7 @@ import './bloc.dart';
 class MutiCheckBloc extends BaseAppBloc<MutiCheckEvent, MutiCheckState> {
   final int maxCheckLength;
 
-  MutiCheckBloc(this.maxCheckLength) : super(InitialMutiCheckState([]));
+  MutiCheckBloc({this.maxCheckLength = 9}) : super(InitialMutiCheckState([]));
 
   changeValue(checkData) {
     add(ChangeCheckDataEvent(checkData));

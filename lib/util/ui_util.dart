@@ -13,9 +13,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 mixin UI {
 
-  ScreenUtil _screenUtil;
 
-  ScreenUtil get screenUtil=>_screenUtil;
+
+  ScreenUtil get screenUtil=>ScreenUtil();
 
   /// screen width
   /// 屏幕 宽
@@ -26,19 +26,17 @@ mixin UI {
   double get screenHeight => ScreenUtil().screenHeight;
 
   double sFontSize(double size) {
-    return _screenUtil.setSp(size);
+    return screenUtil.setSp(size);
   }
 
-  init(ScreenUtil screenUtil){
-    _screenUtil=screenUtil;
-  }
+
 
   double sHeight(double size) {
-    return _screenUtil.setWidth(size);
+    return screenUtil.setWidth(size);
   }
 
   double sWidth(double size) {
-    return _screenUtil.setWidth(size);
+    return screenUtil.setWidth(size);
   }
 
   EdgeInsets sInsetsLTRB(double left, double top, double right, double bottom) {

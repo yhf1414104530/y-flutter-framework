@@ -25,4 +25,8 @@ abstract class BaseEvent<B, S>  {
     bloc.view.dismissDialog();
     throw DomainException(entity.message, code: entity.code);
   }
+
+  bool isSuccess(BaseNetEntity entity) {
+    return entity.code == 200;
+  }
 }
