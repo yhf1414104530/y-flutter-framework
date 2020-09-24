@@ -1,19 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:y_framework/base/base_view_to_presenter.dart';
 import 'package:y_framework/util/index.dart';
-import 'package:y_framework/util/router_util.dart';
 
-abstract class BaseState<T extends StatefulWidget> extends State<T>
-    with RouterFunction, UI, ViewToBloc {
-
-
-
-  @override
-  void sendEventToView(ViewEvent event) {
-    print(event);
-  }
+abstract class YBaseState<T extends StatefulWidget> extends State<T>
+    with UI, ViewToBloc {
 
   @override
   void initState() {
@@ -23,8 +13,6 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
       onResume();
     });
   }
-
-
 
   void onResume() {}
 }

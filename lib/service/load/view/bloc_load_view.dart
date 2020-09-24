@@ -12,10 +12,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:y_framework/service/load/bloc/bloc.dart';
 
+typedef ErrorBuilder = Widget Function(Exception exception);
+
 class YBlocLoadView extends StatelessWidget {
   final LoadBloc loadBloc;
   final Widget child;
-  final Widget errorWidget;
+  final Widget loadingWidget;
+  final ErrorBuilder errorBuilder;
   final bool isInitLoading;
 
   const YBlocLoadView(
@@ -23,7 +26,8 @@ class YBlocLoadView extends StatelessWidget {
       @required this.child,
       @required this.loadBloc,
       this.isInitLoading = false,
-      @required this.errorWidget})
+      @required this.errorBuilder,
+      this.loadingWidget})
       : super(key: key);
 
   @override
@@ -33,10 +37,10 @@ class YBlocLoadView extends StatelessWidget {
         builder: (context, state) {
           if (state is LoadingState ||
               (isInitLoading && state is InitialState)) {
-            return Center(child: CircularProgressIndicator());
+            return loadingWidget ?? Center(child: CircularProgressIndicator());
           }
           if (state is ErrorState) {
-            return errorWidget;
+            return errorBuilder(state.ex);
           }
           return child;
         },

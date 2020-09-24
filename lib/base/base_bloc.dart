@@ -53,6 +53,11 @@ abstract class BaseLoadBloc<Event extends BaseEvent, State>
     _loadBloc.success();
   }
 
+  bool isLoading() {
+    return loadBloc.state is LoadingState;
+  }
+
+
   @override
   Future<void> close() {
     _loadBloc.close();

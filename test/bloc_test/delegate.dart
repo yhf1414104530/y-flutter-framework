@@ -20,7 +20,15 @@ class SimpleBlocDelegate extends BlocObserver {
   void onError(Cubit cubit, Object error, StackTrace stackTrace) {
     // TODO: implement onError
     super.onError(cubit, error, stackTrace);
-    if (cubit is BaseLoadBloc) {}
+    if (cubit is BaseLoadBloc) {
+      if(cubit.isLoading()){
+        print(error is PersistenceException);
+        print(error is ServiceException);
+        print(error is DomainException);
+        cubit.pageError(error);
+      }
+      print(cubit.isLoading());
+    }
     if (error is DomainException) {
     } else if (error is ServiceException || error is DioError) {}
     print('$error===$cubit==$stackTrace');

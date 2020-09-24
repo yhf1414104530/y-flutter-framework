@@ -11,5 +11,4 @@
 export 'ui_util.dart';
 export 'nav.dart';
 export 'object_util.dart';
-export 'router_util.dart';
 export 'share_preference_util.dart';
