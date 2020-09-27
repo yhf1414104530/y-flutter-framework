@@ -44,10 +44,10 @@ class LocalStorageService extends YLocalStorage {
   }
 
   @override
-  Future<File> saveJsonMessage(String key, Map<String, dynamic> jsonMap) async {
+  Future<File> saveJsonMessage(String key, String jsonMessage) async {
     return _saveLocalInfo(
         key,
-        LocalStorageBean(CacheType.JSON, json.encode(jsonMap),
+        LocalStorageBean(CacheType.JSON, jsonMessage,
             createDateTime: DateTime.now()));
   }
 

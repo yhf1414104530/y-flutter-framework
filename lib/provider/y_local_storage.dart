@@ -13,14 +13,13 @@ import 'dart:io';
 import 'package:y_framework/service/local_storage/local_storage_bean.dart';
 
 abstract class YLocalStorage {
-
   Future<File> saveImageFile(String key, String url, {String saveInfo});
 
   Future<File> saveVideoFile(String key, String url, {String saveInfo});
 
   Future<File> saveMessage(String key, String message);
 
-  Future<File> saveJsonMessage(String key, Map<String, dynamic> jsonMap);
+  Future<File> saveJsonMessage(String key, String jsonMessage);
 
   Future<LocalStorageBean> getLocalInfo(String key);
 
