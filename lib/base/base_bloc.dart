@@ -37,7 +37,7 @@ abstract class BaseLoadBloc<Event extends BaseEvent, State>
     extends BaseAppBloc<Event, State> {
   final ViewToBloc view;
 
-  LoadBloc _loadBloc = LoadBloc(SuccessState());
+  LoadBloc _loadBloc = LoadBloc(InitialState());
 
   LoadBloc get loadBloc => _loadBloc;
 
