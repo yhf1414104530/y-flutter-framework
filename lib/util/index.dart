@@ -8,6 +8,5 @@
  * @author   YHF
  */
 
-export 'ui_util.dart';
 export 'object_util.dart';
 export 'share_preference_util.dart';

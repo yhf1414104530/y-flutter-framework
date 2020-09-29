@@ -3,8 +3,7 @@ import 'package:y_framework/base/base_view_to_presenter.dart';
 import 'package:y_framework/util/index.dart';
 
 abstract class YBaseState<T extends StatefulWidget> extends State<T>
-    with UI, ViewToBloc {
-
+    with ViewToBloc {
   @override
   void initState() {
     super.initState();
