@@ -14,7 +14,11 @@ import 'package:y_framework/provider/y_log.dart';
 class YDefaultLog extends YLog {
   Logger _log;
 
-  YDefaultLog() {
+  final LogFilter filter;
+  final LogPrinter printer;
+  final LogOutput output;
+
+  YDefaultLog({this.filter, this.printer, this.output}) {
     _log = Logger(
       printer:
           PrettyPrinter(colors: false, printEmojis: false, printTime: false),

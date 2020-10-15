@@ -7,11 +7,20 @@
  *
  * @author   YHF
  */
+import 'package:logger/logger.dart';
 import 'package:y_framework/service/log/y_default_log.dart';
 
-YDefaultLog _log = YDefaultLog();
-
 class Log {
+  static YDefaultLog _log;
+
+  static init({
+    LogFilter filter,
+    LogPrinter printer,
+    LogOutput output,
+  }) {
+    _log = YDefaultLog(filter: filter, printer: printer, output: output);
+  }
+
   static void d(String s) {
     _log.logD(s);
   }
