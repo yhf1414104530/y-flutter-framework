@@ -20,7 +20,9 @@ class YDefaultLog extends YLog {
 
   YDefaultLog({this.filter, this.printer, this.output}) {
     _log = Logger(
-      printer:
+      filter: filter,
+      output: output,
+      printer: printer ??
           PrettyPrinter(colors: false, printEmojis: false, printTime: false),
     );
   }
