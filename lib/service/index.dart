@@ -15,3 +15,4 @@ export 'load/view/bloc_load_view.dart';
 
 export 'local_storage/local_storage_service.dart';
 export 'log/y_default_log.dart';
+export 'log/log.dart';
