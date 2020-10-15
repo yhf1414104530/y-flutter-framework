@@ -16,7 +16,8 @@ class YDefaultLog extends YLog {
 
   YDefaultLog() {
     _log = Logger(
-      printer: PrettyPrinter(colors: true, printEmojis: true, printTime: false),
+      printer:
+          PrettyPrinter(colors: false, printEmojis: false, printTime: false),
     );
   }
 
