@@ -8,30 +8,31 @@
  * @author   YHF
  */
 
-import 'package:quick_log/quick_log.dart';
+import 'package:logger/logger.dart';
 import 'package:y_framework/provider/y_log.dart';
 
 class YDefaultLog extends YLog {
   Logger _log;
 
   YDefaultLog() {
-    Logger.writer = ConsolePrinter(minLevel: LogLevel.info);
-    _log = Logger(logName);
+    _log = Logger(
+      printer: PrettyPrinter(colors: true, printEmojis: true, printTime: false),
+    );
   }
 
   @override
   void logD(String s) {
-    _log.debug(s);
+    _log.d(s);
   }
 
   @override
   void logE(String s) {
-    _log.error(s);
+    _log.e(s);
   }
 
   @override
   void logI(String s) {
-    _log.info(s);
+    _log.i(s);
   }
 
   @override
@@ -40,6 +41,6 @@ class YDefaultLog extends YLog {
 
   @override
   void logW(String s) {
-    _log.warning(s);
+    _log.w(s);
   }
 }
