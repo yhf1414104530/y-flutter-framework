@@ -10,6 +10,7 @@
 
 import 'package:logger/logger.dart';
 import 'package:y_framework/provider/y_log.dart';
+import 'package:y_framework/util/xy_printer.dart';
 
 class YDefaultLog extends YLog {
   Logger _log;

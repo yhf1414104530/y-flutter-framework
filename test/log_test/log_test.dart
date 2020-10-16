@@ -8,12 +8,13 @@
  * @author   YHF
  */
 
-
 import 'package:y_framework/service/log/log.dart';
 
-void main(){
-  Log.w('s');
-  Log.e('s');
-  Log.i('s');
-  Log.d('s');
+import 'test_one.dart';
+import 'test_two.dart';
+
+void main() {
+  Log.init();
+  TestOne().log();
+  TestTwo().log();
 }
