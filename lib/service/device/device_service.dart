@@ -40,6 +40,6 @@ class DeviceInfoService {
   }
 
   _getIosDeviceId() {
-    return '${_iosDeviceInfo?.model}_${_iosDeviceInfo?.systemName}';
+    return _iosDeviceInfo.identifierForVendor;
   }
 }

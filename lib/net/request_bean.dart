@@ -17,7 +17,6 @@ class RequestBean {
   /// if [isCacheLocal] is true ，I cache the data requested by the network locally
   final bool isCacheLocal;
   final String cacheTag;
-  final bool isList;
 
   RequestBean(
     this.requestUrl,
@@ -26,7 +25,6 @@ class RequestBean {
     this.requestJson,
     this.isCacheLocal = false,
     this.requestType = RequestType.POST,
-    this.isList = false,
   });
 }
 
