@@ -11,8 +11,9 @@
 class BaseNetEntity<T> {
   int code;
   String message;
+  String traceId;
 
-  BaseNetEntity({this.code, this.message, this.data});
+  BaseNetEntity({this.code, this.message, this.data,this.traceId});
 
   T data;
 }
