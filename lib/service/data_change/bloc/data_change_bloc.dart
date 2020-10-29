@@ -5,7 +5,12 @@ class DataChangeBloc<T>
     extends BaseAppBloc<DataChangeEvent<T>, DataChangeState<T>> {
   final T data;
 
-  DataChangeBloc({this.data}) : super(InitialDataChangeState(data));
+  final ValueChanged<T> valueChanged;
+
+  DataChangeBloc({
+    this.data,
+    this.valueChanged,
+  }) : super(InitialDataChangeState(data));
 
   void changeData(T data) {
     add(ChangeDataEvent(data));
