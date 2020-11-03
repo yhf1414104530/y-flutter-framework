@@ -17,6 +17,8 @@ mixin ViewToBloc {
 
   void toast(String s);
 
+  bool isShowLoading();
+
   void sendEventToView(ViewEvent event);
 }
 
