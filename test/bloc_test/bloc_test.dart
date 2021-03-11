@@ -46,4 +46,9 @@ class TestView with ViewToBloc {
   void toast(String s) {
     print('toast-$s');
   }
+
+  @override
+  bool isShowLoading() {
+    return true;
+  }
 }
