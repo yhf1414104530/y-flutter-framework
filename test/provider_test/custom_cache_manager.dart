@@ -12,27 +12,19 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path/path.dart' as p;
 
-class CustomCacheManager extends BaseCacheManager {
-  static const key = "xy_cache";
+class CustomCacheManager extends CacheManager {
+  static const key = 'xy_cache';
 
-  static CustomCacheManager _instance;
+  static final CustomCacheManager _instance = CustomCacheManager._();
 
   factory CustomCacheManager() {
-    if (_instance == null) {
-      _instance = new CustomCacheManager._();
-    }
     return _instance;
   }
 
   CustomCacheManager._()
-      : super(
+      : super(Config(
           key,
-          maxAgeCacheObject: Duration(days: 7),
+          stalePeriod: Duration(days: 7),
           maxNrOfCacheObjects: 20,
-        );
-
-  Future<String> getFilePath() async {
-    var directory = await getTemporaryDirectory();
-    return p.join(directory.path, key);
-  }
+        ));
 }
