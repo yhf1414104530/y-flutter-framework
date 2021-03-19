@@ -49,6 +49,7 @@ class TestView with ViewToBloc {
 
   @override
   bool isShowLoading() {
-    return true;
+    // TODO: implement isShowLoading
+    throw UnimplementedError();
   }
 }
