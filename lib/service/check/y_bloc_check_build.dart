@@ -26,7 +26,7 @@ class YBlocCheckBuild extends StatelessWidget {
       builder: (BuildContext context, CheckState state) {
         return builder(context, state);
       },
-      cubit: checkBloc,
+      bloc: checkBloc,
     );
   }
 }

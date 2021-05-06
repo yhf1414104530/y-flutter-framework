@@ -17,7 +17,7 @@ class SimpleBlocDelegate extends BlocObserver {
   }
 
   @override
-  void onError(Cubit cubit, Object error, StackTrace stackTrace) {
+  void onError(BlocBase cubit, Object error, StackTrace stackTrace) {
     // TODO: implement onError
     super.onError(cubit, error, stackTrace);
     if (cubit is BaseLoadBloc) {
@@ -35,7 +35,7 @@ class SimpleBlocDelegate extends BlocObserver {
   }
 
   @override
-  void onChange(Cubit cubit, Change change) {
+  void onChange(BlocBase cubit, Change change) {
     // TODO: implement onChange
     super.onChange(cubit, change);
     print('$cubit===$change');

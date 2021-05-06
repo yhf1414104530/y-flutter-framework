@@ -26,7 +26,7 @@ class DataChangeWidget<T> extends StatelessWidget {
       builder: (BuildContext context, DataChangeState<T> state) {
         return child(context, state);
       },
-      cubit: dataChangeBloc,
+      bloc: dataChangeBloc,
     );
   }
 }

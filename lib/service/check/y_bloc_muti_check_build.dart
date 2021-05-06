@@ -26,7 +26,7 @@ class YMutiBlocCheckBuild extends StatelessWidget {
       builder: (BuildContext context, MutiCheckState state) {
         return builder(context, state);
       },
-      cubit: mutiCheckBloc,
+      bloc: mutiCheckBloc,
     );
   }
 }
