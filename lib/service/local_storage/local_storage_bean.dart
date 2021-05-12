@@ -20,14 +20,17 @@ class LocalStorageBean {
 
   DateTime createDateTime;
 
+  String version;
+
   LocalStorageBean(this.cacheType, this.cacheInfo,
-      {this.cacheFilePath, this.createDateTime});
+      {this.cacheFilePath, this.createDateTime,this.version});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data["cacheType"] = this.cacheType;
     data["cacheFilePath"] = this.cacheFilePath;
     data["cacheInfo"] = this.cacheInfo;
+    data["version"] = this.version;
     if (!ObjectUtil.isEmpty(createDateTime)) {
       data["createDateTime"] = this.createDateTime.toIso8601String();
     }
@@ -38,6 +41,7 @@ class LocalStorageBean {
     cacheType = json['cacheType'];
     cacheFilePath = json['cacheFilePath'];
     cacheInfo = json['cacheInfo'];
+    version = json['version'];
     if (!ObjectUtil.isEmptyString(json['createDateTime'])) {
       createDateTime = DateTime.parse(json['createDateTime']);
     }
