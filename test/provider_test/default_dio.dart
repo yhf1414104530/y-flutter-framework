@@ -56,7 +56,11 @@ class DefaultDio extends YDio {
 
   @override
   Future requestPostJson(String apiAddress, {String json}) {
-    // TODO: implement requestPostJson
-    throw UnimplementedError();
+    return _dio.post(apiAddress, data: json);
+  }
+
+  @override
+  Future requestPostJsonV2(String apiAddress, {jsonObject}) {
+    return _dio.post(apiAddress, data: json.encode(jsonObject));
   }
 }

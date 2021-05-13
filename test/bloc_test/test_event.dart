@@ -37,9 +37,9 @@ class ChangeDataLoadingEvent extends TestEvent {
 
   @override
   Stream<TestState> applyAsync({TestBloc bloc, TestState currentState}) async* {
-    bloc.pageLoading();
+    bloc.view.showLoadingDialog();
     await Future.delayed(Duration(seconds: 2));
-    //bloc.view.dismissDialog();
+    bloc.view.dismissDialog();
     throw PersistenceException('Test');
     yield TestInitial(data);
   }

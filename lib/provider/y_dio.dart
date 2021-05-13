@@ -13,7 +13,11 @@ abstract class YDio {
 
   Future requestPost(String apiAddress, {Map<String, dynamic> requestParams});
 
+  @deprecated
   Future requestPostJson(String apiAddress, {String json});
+
+  @deprecated
+  Future requestPostJsonV2(String apiAddress, {dynamic jsonObject});
 
   Future requestDel(String apiAddress, {Map<String, dynamic> requestParams});
 }

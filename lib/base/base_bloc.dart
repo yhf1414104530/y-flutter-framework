@@ -12,8 +12,7 @@ import 'package:bloc/bloc.dart';
 import 'package:y_framework/base/base_view_to_presenter.dart';
 import 'package:y_framework/service/load/bloc/bloc.dart';
 import 'base_event.dart';
-export  'package:flutter/foundation.dart';
-
+export 'package:flutter/foundation.dart';
 
 abstract class BaseAppBloc<Event extends BaseEvent, State>
     extends Bloc<Event, State> {
@@ -34,10 +33,26 @@ abstract class BaseAppBloc<Event extends BaseEvent, State>
 
 ///provider loading state service，if you need loading function
 abstract class BaseLoadBloc<Event extends BaseEvent, State>
+    extends BaseBloc<Event, State> {
+  ViewToBloc view;
+
+  BaseLoadBloc(
+    this.view,
+    State initialState,
+  ) : super(initialState) {
+    setView(view);
+  }
+}
+
+abstract class BaseBloc<Event extends BaseEvent, State>
     extends BaseAppBloc<Event, State> {
-  final ViewToBloc view;
+  ViewToBloc view;
 
   LoadBloc _loadBloc = LoadBloc(InitialState());
+
+  setView(ViewToBloc viewToBloc) {
+    view = viewToBloc;
+  }
 
   LoadBloc get loadBloc => _loadBloc;
 
@@ -57,15 +72,11 @@ abstract class BaseLoadBloc<Event extends BaseEvent, State>
     return loadBloc.state is LoadingState;
   }
 
-
   @override
   Future<void> close() {
     _loadBloc.close();
     return super.close();
   }
 
-  BaseLoadBloc(
-    this.view,
-    State initialState,
-  ) : super(initialState);
+  BaseBloc(State initialState) : super(initialState);
 }
