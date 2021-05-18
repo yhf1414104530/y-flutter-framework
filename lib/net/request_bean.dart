@@ -33,4 +33,5 @@ enum RequestType {
   POST,
   POST_JSON,
   DEL,
+  PUT,
 }
