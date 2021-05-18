@@ -11,7 +11,11 @@
 class RequestBean {
   final String requestUrl;
   final Map<String, dynamic> requestParams;
+
+  ///Try to use[requestData]replacement
+  @deprecated
   final String requestJson;
+  final requestData;
   RequestType requestType;
 
   /// if [isCacheLocal] is true ，I cache the data requested by the network locally
@@ -22,6 +26,7 @@ class RequestBean {
     this.requestUrl,
     this.requestParams, {
     this.cacheTag = '',
+    this.requestData,
     this.requestJson,
     this.isCacheLocal = false,
     this.requestType = RequestType.POST,
