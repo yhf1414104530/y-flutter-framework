@@ -13,7 +13,9 @@ class BaseNetEntity<T> {
   String message;
   String traceId;
 
-  BaseNetEntity({this.code, this.message, this.data,this.traceId});
+  BaseNetEntity({this.code, this.message, this.data, this.traceId});
 
   T data;
+
+  bool get isSuccess => code == 200;
 }
