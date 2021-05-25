@@ -14,6 +14,8 @@ import 'package:synchronized/synchronized.dart';
 class SharedPreferencesUtil {
   static SharedPreferencesUtil _singleton;
   static SharedPreferences _prefs;
+
+  static SharedPreferences get prefs => _prefs;
   static Lock _lock = Lock();
 
   static Future<SharedPreferencesUtil> getInstance() async {
