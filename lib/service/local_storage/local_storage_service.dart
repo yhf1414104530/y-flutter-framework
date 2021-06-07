@@ -62,12 +62,19 @@ class LocalStorageService extends YLocalStorage {
     if (ObjectUtil.isEmptyString(key)) {
       throw FormatException('请输入正确的key');
     }
+    LocalStorageBean localStorageBean;
     var file = await baseCacheManager.getFileFromCache(key);
     if (ObjectUtil.isEmpty(file)) {
       return Future.value(null);
     }
     var fileJson = file.file.readAsStringSync();
-    return LocalStorageBean.fromJson(json.decode(fileJson));
+    try {
+      var jsonData = json.decode(fileJson);
+      localStorageBean = LocalStorageBean.fromJson(jsonData);
+    } catch (ex) {
+      print(ex.toString());
+    }
+    return localStorageBean;
   }
 
   @override
