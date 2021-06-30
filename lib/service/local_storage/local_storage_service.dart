@@ -14,17 +14,21 @@ class LocalStorageService extends YLocalStorage {
   LocalStorageService(this.baseCacheManager);
 
   @override
-  Future<File> saveImageFile(String key, String url, {String saveInfo}) async {
-    return _saveNetFile(key, url, CacheType.IMAGE, saveInfo: saveInfo);
+  Future<File> saveImageFile(String key, String url,
+      {String saveInfo, String version}) async {
+    return _saveNetFile(key, url, CacheType.IMAGE,
+        saveInfo: saveInfo, version: version);
   }
 
   @override
-  Future<File> saveVideoFile(String key, String url, {String saveInfo}) async {
-    return _saveNetFile(key, url, CacheType.VIDEO, saveInfo: saveInfo);
+  Future<File> saveVideoFile(String key, String url,
+      {String saveInfo, String version}) async {
+    return _saveNetFile(key, url, CacheType.VIDEO,
+        saveInfo: saveInfo, version: version);
   }
 
   Future<File> _saveNetFile(String key, String url, String type,
-      {saveInfo}) async {
+      {saveInfo, String version}) async {
     var fileInfo = await baseCacheManager.downloadFile(url);
     if (ObjectUtil.isEmpty(fileInfo)) {
       throw FormatException('下载失败');
@@ -32,23 +36,26 @@ class LocalStorageService extends YLocalStorage {
     return _saveLocalInfo(
         key,
         LocalStorageBean(type, saveInfo ?? url,
-            cacheFilePath: fileInfo.file.path, createDateTime: DateTime.now()));
+            cacheFilePath: fileInfo.file.path,
+            createDateTime: DateTime.now(),
+            version: version));
   }
 
   @override
-  Future<File> saveMessage(String key, String message) async {
+  Future<File> saveMessage(String key, String message, {String version}) async {
     return _saveLocalInfo(
         key,
         LocalStorageBean(CacheType.TEXT, message,
-            createDateTime: DateTime.now()));
+            createDateTime: DateTime.now(), version: version));
   }
 
   @override
-  Future<File> saveJsonMessage(String key, String jsonMessage) async {
+  Future<File> saveJsonMessage(String key, String jsonMessage,
+      {String version}) async {
     return _saveLocalInfo(
         key,
         LocalStorageBean(CacheType.JSON, jsonMessage,
-            createDateTime: DateTime.now()));
+            createDateTime: DateTime.now(), version: version));
   }
 
   Future<File> _saveLocalInfo(String key, LocalStorageBean localStorageBean,
