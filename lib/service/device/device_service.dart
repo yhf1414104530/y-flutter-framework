@@ -15,7 +15,7 @@ import 'package:device_info/device_info.dart';
 import 'package:package_info/package_info.dart';
 
 class DeviceInfoService {
-  String get osType => Platform.isAndroid ? 'Android' : 'Ios';
+  String get osType => Platform.isAndroid ? 'Android' : 'iOS';
 
   String get deviceId =>
       Platform.isAndroid ? _getAndroidDeviceId() : _getIosDeviceId();
