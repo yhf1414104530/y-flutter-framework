@@ -22,7 +22,7 @@ abstract class BaseEvent<B, S> {
   }
 
   void handlerLoadException(BaseLoadBloc bloc, BaseNetEntity entity) {
-    bloc.view.dismissDialog();
+    bloc.view?.dismissDialog();
     throw DomainException(entity.message.toString(), code: entity.code ?? 0);
   }
 

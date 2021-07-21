@@ -34,19 +34,19 @@ abstract class BaseAppBloc<Event extends BaseEvent, State>
 ///provider loading state service，if you need loading function
 abstract class BaseLoadBloc<Event extends BaseEvent, State>
     extends BaseBloc<Event, State> {
-  ViewToBloc view;
+  ViewToBloc viewToBloc;
 
   BaseLoadBloc(
-    this.view,
+    this.viewToBloc,
     State initialState,
   ) : super(initialState) {
-    setView(view);
+    setView(viewToBloc);
   }
 }
 
 abstract class BaseBloc<Event extends BaseEvent, State>
     extends BaseAppBloc<Event, State> {
-  late ViewToBloc view;
+  ViewToBloc? view;
 
   LoadBloc _loadBloc = LoadBloc(InitialState());
 
