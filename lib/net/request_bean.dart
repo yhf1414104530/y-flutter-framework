@@ -14,7 +14,7 @@ class RequestBean {
 
   ///Try to use[requestData]replacement
   @deprecated
-  final String requestJson;
+  final String? requestJson;
   final requestData;
   RequestType requestType;
 

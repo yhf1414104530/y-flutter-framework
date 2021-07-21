@@ -15,20 +15,20 @@ class LocalStorageService extends YLocalStorage {
 
   @override
   Future<File> saveImageFile(String key, String url,
-      {String saveInfo, String version}) async {
+      {String? saveInfo, String? version}) async {
     return _saveNetFile(key, url, CacheType.IMAGE,
         saveInfo: saveInfo, version: version);
   }
 
   @override
   Future<File> saveVideoFile(String key, String url,
-      {String saveInfo, String version}) async {
+      {String? saveInfo, String? version}) async {
     return _saveNetFile(key, url, CacheType.VIDEO,
         saveInfo: saveInfo, version: version);
   }
 
   Future<File> _saveNetFile(String key, String url, String type,
-      {saveInfo, String version}) async {
+      {saveInfo, String? version}) async {
     var fileInfo = await baseCacheManager.downloadFile(url);
     if (ObjectUtil.isEmpty(fileInfo)) {
       throw FormatException('下载失败');
@@ -42,7 +42,7 @@ class LocalStorageService extends YLocalStorage {
   }
 
   @override
-  Future<File> saveMessage(String key, String message, {String version}) async {
+  Future<File> saveMessage(String key, String message, {String? version}) async {
     return _saveLocalInfo(
         key,
         LocalStorageBean(CacheType.TEXT, message,
@@ -51,27 +51,26 @@ class LocalStorageService extends YLocalStorage {
 
   @override
   Future<File> saveJsonMessage(String key, String jsonMessage,
-      {String version}) async {
+      {String? version}) async {
     return _saveLocalInfo(
         key,
         LocalStorageBean(CacheType.JSON, jsonMessage,
             createDateTime: DateTime.now(), version: version));
   }
 
-  Future<File> _saveLocalInfo(String key, LocalStorageBean localStorageBean,
-      {Type type}) {
+  Future<File> _saveLocalInfo(String key, LocalStorageBean localStorageBean) {
     return baseCacheManager.putFile(
         key, Utf8Encoder().convert(json.encode(localStorageBean.toJson())));
   }
 
   @override
-  Future<LocalStorageBean> getLocalInfo(String key) async {
+  Future<LocalStorageBean?> getLocalInfo(String key) async {
     if (ObjectUtil.isEmptyString(key)) {
       throw FormatException('请输入正确的key');
     }
-    LocalStorageBean localStorageBean;
+    LocalStorageBean? localStorageBean;
     var file = await baseCacheManager.getFileFromCache(key);
-    if (ObjectUtil.isEmpty(file)) {
+    if (file == null) {
       return Future.value(null);
     }
     var fileJson = file.file.readAsStringSync();
@@ -86,9 +85,6 @@ class LocalStorageService extends YLocalStorage {
 
   @override
   void removeData(String key) async {
-    if (key == null) {
-      return null;
-    }
     baseCacheManager.removeFile(key);
   }
 }

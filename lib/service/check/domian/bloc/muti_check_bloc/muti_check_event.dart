@@ -15,7 +15,7 @@ class ChangeCheckDataEvent extends MutiCheckEvent {
 
   @override
   Stream<MutiCheckState> applyAsync(
-      {MutiCheckState currentState, MutiCheckBloc bloc}) async* {
+      {required MutiCheckState currentState,required MutiCheckBloc bloc}) async* {
     if (currentState.checkList.contains(checkData)) {
       currentState.checkList.remove(checkData);
     } else {
@@ -27,10 +27,6 @@ class ChangeCheckDataEvent extends MutiCheckEvent {
     // TODO: implement applyAsync
     yield InitialMutiCheckState(currentState.checkList);
   }
-
-  @override
-  // TODO: implement props
-  List<Object> get props => null;
 }
 
 class AddCheckDataEvent extends MutiCheckEvent {
@@ -40,14 +36,10 @@ class AddCheckDataEvent extends MutiCheckEvent {
 
   @override
   Stream<MutiCheckState> applyAsync(
-      {MutiCheckState currentState, MutiCheckBloc bloc}) async* {
+      {required MutiCheckState currentState,required MutiCheckBloc bloc}) async* {
     currentState.checkList.add(data);
     yield InitialMutiCheckState(currentState.checkList);
   }
-
-  @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
 }
 
 class RemoveCheckDataEvent extends MutiCheckEvent {
@@ -57,12 +49,8 @@ class RemoveCheckDataEvent extends MutiCheckEvent {
 
   @override
   Stream<MutiCheckState> applyAsync(
-      {MutiCheckState currentState, MutiCheckBloc bloc}) async* {
+      {required MutiCheckState currentState,required MutiCheckBloc bloc}) async* {
     currentState.checkList.remove(data);
     yield InitialMutiCheckState(currentState.checkList);
   }
-
-  @override
-  // TODO: implement props
-  List<Object> get props => throw UnimplementedError();
 }

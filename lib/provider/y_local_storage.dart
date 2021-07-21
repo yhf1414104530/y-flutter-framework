@@ -21,7 +21,7 @@ abstract class YLocalStorage {
 
   Future<File> saveJsonMessage(String key, String jsonMessage);
 
-  Future<LocalStorageBean> getLocalInfo(String key);
+  Future<LocalStorageBean?> getLocalInfo(String key);
 
   void removeData(String key);
 }

@@ -28,13 +28,13 @@ abstract class YBaseState<T extends StatefulWidget> extends State<T>
         .toList();
     if (ObjectUtil.isEmptyList(list))
       throw TransactionException('${T.toString()} is null，please inject bloc object..');
-    return _mList[0];
+    return _mList[0] as T;
   }
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding widgetsBinding = WidgetsBinding.instance;
+    WidgetsBinding widgetsBinding = WidgetsBinding.instance!;
     widgetsBinding.addPostFrameCallback((callback) {
       onResume();
     });
@@ -48,7 +48,7 @@ abstract class YBaseState<T extends StatefulWidget> extends State<T>
   @override
   void dispose() {
     for (var value in _mList) {
-      value?.close();
+      value.close();
     }
     super.dispose();
   }

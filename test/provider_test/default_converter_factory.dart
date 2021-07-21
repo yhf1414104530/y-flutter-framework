@@ -14,9 +14,10 @@ import 'package:y_framework/provider/y_converter_factory.dart';
 class DefaultConverterFactory extends YConverterFactory {
   @override
   BaseNetEntity<T> transformData<T>(data) {
-    int code = data['code'];
-    String message = data['message'];
-    var dataInfo = data['data'];
+    var response = data.data;
+    int code = response['code'];
+    String? message = response['message'];
+    var dataInfo = response['data'];
     return BaseNetEntity(code: code, message: message, data: dataInfo);
   }
 }

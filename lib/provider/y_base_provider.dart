@@ -20,7 +20,7 @@ abstract class YBaseProvider<T> {
 
   Future<BaseNetEntity<T>> load();
 
-  Future<T> loadLocal();
+  Future<T?> loadLocal();
 
   RequestBean get requestBean;
 

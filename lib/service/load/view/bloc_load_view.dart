@@ -17,16 +17,16 @@ typedef ErrorBuilder = Widget Function(Exception exception);
 class YBlocLoadView extends StatelessWidget {
   final LoadBloc loadBloc;
   final Widget child;
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
   final ErrorBuilder errorBuilder;
   final bool isInitLoading;
 
   const YBlocLoadView(
-      {Key key,
-      @required this.child,
-      @required this.loadBloc,
+      {Key? key,
+      required this.child,
+      required this.loadBloc,
       this.isInitLoading = false,
-      @required this.errorBuilder,
+      required this.errorBuilder,
       this.loadingWidget})
       : super(key: key);
 

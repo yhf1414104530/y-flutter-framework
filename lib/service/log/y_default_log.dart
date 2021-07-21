@@ -10,14 +10,13 @@
 
 import 'package:logger/logger.dart';
 import 'package:y_framework/provider/y_log.dart';
-import 'package:y_framework/util/xy_printer.dart';
 
 class YDefaultLog extends YLog {
-  Logger _log;
+  late Logger _log;
 
-  final LogFilter filter;
-  final LogPrinter printer;
-  final LogOutput output;
+  final LogFilter? filter;
+  final LogPrinter? printer;
+  final LogOutput? output;
 
   YDefaultLog({this.filter, this.printer, this.output}) {
     _log = Logger(

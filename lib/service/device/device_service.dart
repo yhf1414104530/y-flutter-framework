@@ -20,13 +20,13 @@ class DeviceInfoService {
   String get deviceId =>
       Platform.isAndroid ? _getAndroidDeviceId() : _getIosDeviceId();
 
-  AndroidDeviceInfo _androidDeviceInfo;
-  IosDeviceInfo _iosDeviceInfo;
-  PackageInfo _packageInfo;
+  late AndroidDeviceInfo _androidDeviceInfo;
+  late IosDeviceInfo _iosDeviceInfo;
+  late PackageInfo _packageInfo;
 
-  String get version => _packageInfo?.version;
+  String get version => _packageInfo.version;
 
-  String get buildNumber => _packageInfo?.buildNumber;
+  String get buildNumber => _packageInfo.buildNumber;
 
   void initDevice() async {
     _packageInfo = await PackageInfo.fromPlatform();

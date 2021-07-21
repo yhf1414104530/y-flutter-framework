@@ -48,7 +48,10 @@ abstract class BaseProvider<T> extends YBaseProvider<T> {
         break;
       case RequestType.POST_JSON:
         data = await _customProvider.dio.requestPostJson(requestBean.requestUrl,
-            json: requestBean.requestJson);
+            json: requestBean.requestJson.toString());
+        break;
+      case RequestType.PUT:
+        // TODO: Handle this case.
         break;
     }
     return _transformData(data);
@@ -73,7 +76,7 @@ abstract class BaseProvider<T> extends YBaseProvider<T> {
   void _cacheToLocal(transformData) {}
 
   @override
-  Future<T> loadLocal() async {
+  Future<T?> loadLocal() async {
     var localInfo = await localStorage.getLocalInfo(localCacheKey);
     return null;
   }

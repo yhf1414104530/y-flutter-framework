@@ -5,7 +5,7 @@ import 'package:y_framework/net/exception/exception.dart';
 
 class SimpleBlocDelegate extends BlocObserver {
   @override
-  void onEvent(Bloc bloc, Object event) {
+  void onEvent(bloc, event) {
     super.onEvent(bloc, event);
     print(event);
   }
@@ -25,7 +25,7 @@ class SimpleBlocDelegate extends BlocObserver {
         print(error is PersistenceException);
         print(error is ServiceException);
         print(error is DomainException);
-        cubit.pageError(error);
+        cubit.pageError(error as Exception);
       }
       print(cubit.isLoading());
     }

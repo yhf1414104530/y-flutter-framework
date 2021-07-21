@@ -9,13 +9,13 @@
  */
 
 class BaseNetEntity<T> {
-  int code;
-  String message;
-  String traceId;
+  int? code;
+  String? message;
+  String? traceId;
 
   BaseNetEntity({this.code, this.message, this.data, this.traceId});
 
-  T data;
+  T? data;
 
   bool get isSuccess => code == 200;
 }

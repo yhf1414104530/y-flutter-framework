@@ -6,9 +6,9 @@ import './bloc.dart';
 typedef ChangeValuesListener = void Function(dynamic values);
 
 class CheckBloc extends BaseAppBloc<CheckEvent, CheckState> {
-  final List<CheckModel> checkModel;
+  final List<CheckModel>? checkModel;
 
-  ChangeValuesListener _changeValuesListener;
+  ChangeValuesListener? _changeValuesListener;
 
   final data;
 
@@ -17,7 +17,7 @@ class CheckBloc extends BaseAppBloc<CheckEvent, CheckState> {
 
   changeValue(changeValue) {
     add(ChangeCheckEvent(changeValue));
-    if (_changeValuesListener != null) _changeValuesListener(changeValue);
+    if (_changeValuesListener != null) _changeValuesListener!(changeValue);
   }
 
   addChangeListener(ChangeValuesListener changeValuesListener) {

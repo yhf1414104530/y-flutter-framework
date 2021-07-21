@@ -23,7 +23,7 @@ abstract class BaseAppBloc<Event extends BaseEvent, State>
     Event event,
   ) async* {
     try {
-      yield* event.applyAsync(currentState: state, bloc: this);
+      yield* event.applyAsync(currentState: state, bloc: this) as Stream<State>;
     } catch (_, stackTrace) {
       print(stackTrace);
       yield state;
@@ -46,7 +46,7 @@ abstract class BaseLoadBloc<Event extends BaseEvent, State>
 
 abstract class BaseBloc<Event extends BaseEvent, State>
     extends BaseAppBloc<Event, State> {
-  ViewToBloc view;
+  late ViewToBloc view;
 
   LoadBloc _loadBloc = LoadBloc(InitialState());
 

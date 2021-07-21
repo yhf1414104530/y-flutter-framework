@@ -12,8 +12,7 @@ class ChangeCheckEvent extends CheckEvent {
   ChangeCheckEvent(this.changeValue);
 
   @override
-  Stream<CheckState> applyAsync({CheckState currentState, CheckBloc bloc}) async*{
-    // TODO: implement applyAsync
+  Stream<CheckState> applyAsync({required CheckState currentState,required CheckBloc bloc}) async*{
     yield InitialCheckState(changeValue);
   }
 }

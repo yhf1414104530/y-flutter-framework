@@ -17,7 +17,7 @@ class YMutiBlocCheckBuild extends StatelessWidget {
   final MutiCheckBloc mutiCheckBloc;
 
   const YMutiBlocCheckBuild(
-      {Key key, @required this.builder, @required this.mutiCheckBloc})
+      {Key? key, required this.builder, required this.mutiCheckBloc})
       : super(key: key);
 
   @override

@@ -26,19 +26,15 @@ void main() {}
 class CustomProvider extends YBaseProviderBuilder {
 
   @override
-  // TODO: implement converterFactory
   YConverterFactory get converterFactory => DefaultConverterFactory();
 
   @override
-  // TODO: implement dio
   YDio get dio => DefaultDio();
 
   @override
-  // TODO: implement localStorage
   YLocalStorage get localStorage => LocalStorageService(CustomCacheManager());
 
   @override
-  // TODO: implement log
   YLog get log => YDefaultLog();
 
 }

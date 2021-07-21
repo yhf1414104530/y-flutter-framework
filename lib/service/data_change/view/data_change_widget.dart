@@ -17,7 +17,7 @@ class DataChangeWidget<T> extends StatelessWidget {
   final BlocWidgetBuilder<DataChangeState<T>> child;
 
   const DataChangeWidget(
-      {Key key, @required this.dataChangeBloc, @required this.child})
+      {Key? key, required this.dataChangeBloc, required this.child})
       : super(key: key);
 
   @override

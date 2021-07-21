@@ -17,7 +17,7 @@ class YBlocCheckBuild extends StatelessWidget {
   final CheckBloc checkBloc;
 
   const YBlocCheckBuild(
-      {Key key, @required this.builder, @required this.checkBloc})
+      {Key? key, required this.builder, required this.checkBloc})
       : super(key: key);
 
   @override

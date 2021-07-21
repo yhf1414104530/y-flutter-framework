@@ -11,12 +11,12 @@ import 'package:logger/logger.dart';
 import 'package:y_framework/service/log/y_default_log.dart';
 
 class Log {
-  static YDefaultLog _log;
+  static late YDefaultLog _log;
 
   static init({
-    LogFilter filter,
-    LogPrinter printer,
-    LogOutput output,
+    LogFilter? filter,
+    LogPrinter? printer,
+    LogOutput? output,
   }) {
     _log = YDefaultLog(filter: filter, printer: printer, output: output);
   }

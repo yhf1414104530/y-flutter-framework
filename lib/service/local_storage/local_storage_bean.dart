@@ -8,22 +8,21 @@
  * @author   YHF
  */
 
-
 import 'package:y_framework/util/index.dart';
 
 class LocalStorageBean {
-  String cacheType;
+  late String cacheType;
 
-  String cacheFilePath;
+  String? cacheFilePath;
 
-  String cacheInfo;
+  late String cacheInfo;
 
-  DateTime createDateTime;
+  DateTime? createDateTime;
 
-  String version;
+  String? version;
 
   LocalStorageBean(this.cacheType, this.cacheInfo,
-      {this.cacheFilePath, this.createDateTime,this.version});
+      {this.cacheFilePath, this.createDateTime, this.version});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -31,9 +30,7 @@ class LocalStorageBean {
     data["cacheFilePath"] = this.cacheFilePath;
     data["cacheInfo"] = this.cacheInfo;
     data["version"] = this.version;
-    if (!ObjectUtil.isEmpty(createDateTime)) {
-      data["createDateTime"] = this.createDateTime.toIso8601String();
-    }
+    data["createDateTime"] = this.createDateTime?.toIso8601String();
     return data;
   }
 
