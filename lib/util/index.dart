@@ -10,3 +10,4 @@
 
 export 'object_util.dart';
 export 'share_preference_util.dart';
+export 'env.dart';
