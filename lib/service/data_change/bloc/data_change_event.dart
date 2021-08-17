@@ -8,7 +8,7 @@ abstract class DataChangeEvent<T>
 }
 
 class ChangeDataEvent<T> extends DataChangeEvent<T> {
-  final T data;
+  final T? data;
 
   ChangeDataEvent(this.data);
 
