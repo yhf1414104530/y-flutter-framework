@@ -19,3 +19,4 @@ class ChangeDataEvent<T> extends DataChangeEvent<T> {
     if (bloc.valueChanged != null) bloc.valueChanged!(data);
   }
 }
+
