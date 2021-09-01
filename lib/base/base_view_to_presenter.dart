@@ -8,10 +8,9 @@
  * @author   YHF
  */
 
-import 'package:flutter/material.dart';
 
 mixin ViewToBloc {
-  void showLoadingDialog();
+  void showLoadingDialog({String msg});
 
   void dismissDialog();
 
@@ -22,6 +21,4 @@ mixin ViewToBloc {
   void sendEventToView(ViewEvent event);
 }
 
-abstract class ViewEvent {
-
-}
+abstract class ViewEvent {}

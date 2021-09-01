@@ -38,7 +38,7 @@ class TestView with ViewToBloc {
   }
 
   @override
-  void showLoadingDialog() {
+  void showLoadingDialog({String? msg}) {
     print('showLoadingDialog');
   }
 
