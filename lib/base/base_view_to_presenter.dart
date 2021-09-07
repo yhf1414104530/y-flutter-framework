@@ -10,7 +10,7 @@
 
 
 mixin ViewToBloc {
-  void showLoadingDialog({String msg});
+  void showLoadingDialog({String? msg});
 
   void dismissDialog();
 
