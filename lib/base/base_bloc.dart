@@ -23,7 +23,7 @@ abstract class BaseAppBloc<Event extends BaseEvent, State>
     Event event,
   ) async* {
     try {
-      yield* event.applyAsync(currentState: state, bloc: this) as Stream<State>;
+      yield* event.applyAsync(this, state) as Stream<State>;
     } catch (_, stackTrace) {
       print(stackTrace);
       yield state;

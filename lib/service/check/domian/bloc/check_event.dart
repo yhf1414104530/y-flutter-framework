@@ -1,4 +1,3 @@
-
 import 'package:y_framework/base/base_event.dart';
 import 'package:y_framework/service/check/domian/bloc/bloc.dart';
 
@@ -12,7 +11,8 @@ class ChangeCheckEvent extends CheckEvent {
   ChangeCheckEvent(this.changeValue);
 
   @override
-  Stream<CheckState> applyAsync({required CheckState currentState,required CheckBloc bloc}) async*{
+  Stream<CheckState> applyAsync(
+      CheckBloc bloc, CheckState currentState) async* {
     yield InitialCheckState(changeValue);
   }
 }

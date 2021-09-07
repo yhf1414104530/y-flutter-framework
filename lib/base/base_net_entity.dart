@@ -8,6 +8,8 @@
  * @author   YHF
  */
 
+import 'package:y_framework/util/config.dart';
+
 class BaseNetEntity<T> {
   int? code;
   String? message;
@@ -17,5 +19,5 @@ class BaseNetEntity<T> {
 
   T? data;
 
-  bool get isSuccess => code == 200;
+  bool get isSuccess => code == FConfig.ApiSuccessCode;
 }

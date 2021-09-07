@@ -15,7 +15,7 @@ class ChangeCheckDataEvent extends MutiCheckEvent {
 
   @override
   Stream<MutiCheckState> applyAsync(
-      {required MutiCheckState currentState,required MutiCheckBloc bloc}) async* {
+      MutiCheckBloc bloc, MutiCheckState currentState) async* {
     if (currentState.checkList.contains(checkData)) {
       currentState.checkList.remove(checkData);
     } else {
@@ -36,7 +36,7 @@ class AddCheckDataEvent extends MutiCheckEvent {
 
   @override
   Stream<MutiCheckState> applyAsync(
-      {required MutiCheckState currentState,required MutiCheckBloc bloc}) async* {
+      MutiCheckBloc bloc, MutiCheckState currentState) async* {
     currentState.checkList.add(data);
     yield InitialMutiCheckState(currentState.checkList);
   }
@@ -49,7 +49,7 @@ class RemoveCheckDataEvent extends MutiCheckEvent {
 
   @override
   Stream<MutiCheckState> applyAsync(
-      {required MutiCheckState currentState,required MutiCheckBloc bloc}) async* {
+      MutiCheckBloc bloc, MutiCheckState currentState) async* {
     currentState.checkList.remove(data);
     yield InitialMutiCheckState(currentState.checkList);
   }

@@ -9,10 +9,10 @@ class ChangeDataEvent extends TestEvent {
   ChangeDataEvent(this.data);
 
   @override
-  Stream<TestState> applyAsync({required TestBloc bloc,required TestState currentState}) async* {
+  Stream<TestState> applyAsync(TestBloc bloc, TestState currentState) async* {
     bloc.pageLoading();
     await Future.delayed(Duration(seconds: 2));
-   bloc.pageSuccess();
+    bloc.pageSuccess();
     yield TestInitial(data);
   }
 
@@ -22,7 +22,6 @@ class ChangeDataEvent extends TestEvent {
     return '$data';
   }
 }
-
 
 class ChangeDataLoadingEvent extends TestEvent {
   final int data;
@@ -36,7 +35,7 @@ class ChangeDataLoadingEvent extends TestEvent {
   }
 
   @override
-  Stream<TestState> applyAsync({required TestBloc bloc,required TestState currentState}) async* {
+  Stream<TestState> applyAsync(TestBloc bloc, TestState currentState) async* {
     bloc.view?.showLoadingDialog();
     await Future.delayed(Duration(seconds: 2));
     bloc.view?.dismissDialog();

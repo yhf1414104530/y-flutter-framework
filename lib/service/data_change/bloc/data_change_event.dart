@@ -14,7 +14,7 @@ class ChangeDataEvent<T> extends DataChangeEvent<T> {
 
   @override
   Stream<DataChangeState<T>> applyAsync(
-      {required DataChangeState<T> currentState,required DataChangeBloc<T> bloc}) async* {
+      DataChangeBloc<T> bloc, DataChangeState<T> currentState) async* {
     yield InitialDataChangeState(data);
     if (bloc.valueChanged != null) bloc.valueChanged!(data);
   }
