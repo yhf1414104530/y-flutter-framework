@@ -8,32 +8,32 @@
  * @author   YHF
  */
 export 'package:equatable/equatable.dart';
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:y_framework/base/base_view_to_presenter.dart';
 import 'package:y_framework/service/load/bloc/bloc.dart';
 import 'base_event.dart';
 export 'package:flutter/foundation.dart';
 
-abstract class BaseAppBloc<Event extends InnerBaseEvent, State>
+abstract class BaseAppBloc<Event extends BaseEvent, State>
     extends Bloc<Event, State> {
-  BaseAppBloc(State initialState) : super(initialState) {
-    on<Event>((event, emit) async {
-      var newState;
-      if (event is YBaseEvent) {
-        newState = await event.applyEmit(this, state);
-      } else if (event is BaseEvent) {
-        newState = await event.applyAsync(this, state).first;
-      }
-      emit.call(newState);
-    });
+  BaseAppBloc(State initialState) : super(initialState);
+
+  @override
+  Stream<State> mapEventToState(
+    Event event,
+  ) async* {
+    try {
+      yield* event.applyAsync(this, state) as Stream<State>;
+    } catch (_, stackTrace) {
+      print(stackTrace);
+      yield state;
+    }
   }
 }
 
 ///provider loading state service，if you need loading function
-abstract class BaseLoadBloc<Event extends InnerBaseEvent, State>
-    extends BaseBloc<InnerBaseEvent, State> {
+abstract class BaseLoadBloc<Event extends BaseEvent, State>
+    extends BaseBloc<Event, State> {
   ViewToBloc viewToBloc;
 
   BaseLoadBloc(
@@ -44,7 +44,7 @@ abstract class BaseLoadBloc<Event extends InnerBaseEvent, State>
   }
 }
 
-abstract class BaseBloc<Event extends InnerBaseEvent, State>
+abstract class BaseBloc<Event extends BaseEvent, State>
     extends BaseAppBloc<Event, State> {
   ViewToBloc? view;
 

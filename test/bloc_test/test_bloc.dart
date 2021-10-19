@@ -5,9 +5,7 @@ import 'package:y_framework/base/base_bloc.dart';
 import 'package:y_framework/base/base_event.dart';
 import 'package:y_framework/base/base_view_to_presenter.dart';
 import 'package:y_framework/net/exception/exception.dart';
-
 part 'test_event.dart';
-
 part 'test_state.dart';
 
 class TestBloc extends BaseLoadBloc<TestEvent, TestState> {
