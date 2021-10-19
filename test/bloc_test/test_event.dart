@@ -1,6 +1,5 @@
 part of 'test_bloc.dart';
 
-@immutable
 abstract class TestEvent extends BaseEvent<TestBloc, TestState> {}
 
 class ChangeDataEvent extends TestEvent {
@@ -17,9 +16,11 @@ class ChangeDataEvent extends TestEvent {
   }
 
   @override
-  String toString() {
-    // TODO: implement toString
-    return '$data';
+  Future<TestState> applyEmit(TestBloc bloc, TestState currentState) async {
+    bloc.pageLoading();
+    await Future.delayed(Duration(seconds: 2));
+    bloc.pageSuccess();
+    return TestInitial(data);
   }
 }
 
@@ -41,5 +42,13 @@ class ChangeDataLoadingEvent extends TestEvent {
     bloc.view?.dismissDialog();
     throw PersistenceException('Test');
     yield TestInitial(data);
+  }
+
+  @override
+  applyEmit(TestBloc bloc, TestState currentState) async {
+    bloc.view?.showLoadingDialog();
+    await Future.delayed(Duration(seconds: 2));
+    bloc.view?.dismissDialog();
+    throw PersistenceException('Test');
   }
 }

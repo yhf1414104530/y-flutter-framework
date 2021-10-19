@@ -15,9 +15,12 @@ import 'package:y_framework/util/config.dart';
 import 'base_bloc.dart';
 import 'base_net_entity.dart';
 
-abstract class BaseEvent<B, S> {
+abstract class BaseEvent<B, S> extends InnerBaseEvent<B, S> {
+  @Deprecated('Use applyEmit instead. Will be removed')
   Stream<S> applyAsync(B bloc, S currentState);
+}
 
+abstract class InnerBaseEvent<B, S> {
   void handlerException(Bloc bloc, BaseNetEntity entity) {
     throw DomainException(entity.message.toString(), code: entity.code ?? 0);
   }
@@ -30,4 +33,8 @@ abstract class BaseEvent<B, S> {
   bool isSuccess(BaseNetEntity entity) {
     return entity.code == FConfig.ApiSuccessCode;
   }
+}
+
+abstract class YBaseEvent<B, S> extends InnerBaseEvent<B, S> {
+  Future<S> applyEmit(B bloc, S currentState);
 }
