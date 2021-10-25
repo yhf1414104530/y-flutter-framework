@@ -4,7 +4,7 @@ import 'package:y_framework/service/check/domian/bloc/muti_check_bloc/bloc.dart'
 
 import 'muti_check_bloc.dart';
 
-abstract class MutiCheckEvent extends BaseEvent<MutiCheckBloc, MutiCheckState> {
+abstract class MutiCheckEvent extends YBaseEvent<MutiCheckBloc, MutiCheckState> {
   MutiCheckEvent();
 }
 

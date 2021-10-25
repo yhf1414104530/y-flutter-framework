@@ -3,7 +3,7 @@ import 'package:y_framework/base/base_event.dart';
 import 'bloc.dart';
 
 abstract class DataChangeEvent<T>
-    extends BaseEvent<DataChangeBloc<T>, DataChangeState<T>> {
+    extends YBaseEvent<DataChangeBloc<T>, DataChangeState<T>> {
   DataChangeEvent();
 }
 

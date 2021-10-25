@@ -14,7 +14,7 @@ import 'package:y_framework/service/load/bloc/bloc.dart';
 import 'base_event.dart';
 export 'package:flutter/foundation.dart';
 
-abstract class BaseAppBloc<Event extends BaseEvent, State>
+abstract class BaseAppBloc<Event extends InnerBaseEvent, State>
     extends Bloc<Event, State> {
   BaseAppBloc(State initialState) : super(initialState);
 
@@ -23,7 +23,12 @@ abstract class BaseAppBloc<Event extends BaseEvent, State>
     Event event,
   ) async* {
     try {
-      yield* event.applyAsync(this, state) as Stream<State>;
+      if (event is YBaseEvent) {
+        yield* event.applyAsync(this, state) as Stream<State>;
+      } else if (event is BaseEvent) {
+        yield* event.applyAsync(bloc: this, currentState: state)
+            as Stream<State>;
+      }
     } catch (_, stackTrace) {
       print(stackTrace);
       yield state;
@@ -32,7 +37,7 @@ abstract class BaseAppBloc<Event extends BaseEvent, State>
 }
 
 ///provider loading state service，if you need loading function
-abstract class BaseLoadBloc<Event extends BaseEvent, State>
+abstract class BaseLoadBloc<Event extends InnerBaseEvent, State>
     extends BaseBloc<Event, State> {
   ViewToBloc viewToBloc;
 
@@ -44,7 +49,7 @@ abstract class BaseLoadBloc<Event extends BaseEvent, State>
   }
 }
 
-abstract class BaseBloc<Event extends BaseEvent, State>
+abstract class BaseBloc<Event extends InnerBaseEvent, State>
     extends BaseAppBloc<Event, State> {
   ViewToBloc? view;
 
